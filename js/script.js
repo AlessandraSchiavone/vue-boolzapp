@@ -86,12 +86,16 @@ var app = new Vue (
                         }
                     ],
                 },
-            ]
+            ],
+            activeIndex:0
         },
         methods:{
             getImage: function(indexContacts){
                let imgUrl = this.contacts[indexContacts].avatar;
                return `img/avatar${imgUrl}.jpg`
+            },
+            setActive: function(newIndex){
+                this.activeIndex = newIndex;
             }
         }
     }

@@ -95,6 +95,7 @@ body{
     overflow-y: scroll;
 }
 .contact{
+    cursor: pointer;
     display: flex;
     height:80px;
     padding: 10px 15px;
