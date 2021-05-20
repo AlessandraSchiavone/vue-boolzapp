@@ -96,6 +96,9 @@ var app = new Vue (
             },
             setActive: function(newIndex){
                 this.activeIndex = newIndex;
+            },
+            getLastMex: function(contact){
+                return contact.messages[contact.messages.length - 1];
             }
         }
     }

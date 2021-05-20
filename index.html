@@ -43,10 +43,10 @@
                         <img class="avatar " :src="getImage(index)" alt="">
                         <div class="info">
                             <h3>{{ contact.name }}</h3>
-                            <h5>Messaggio</h5>
+                            <h5>{{getLastMex(contact).text}}</h5>
                         </div>
                        <div>
-                            <h5>10/01/2020 16:15:22</h5>
+                            <h5>{{getLastMex(contact).date}}</h5>
                        </div>
                    </div>
                </div>
