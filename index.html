@@ -7,16 +7,17 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <title>Vue Boolzapp</title>
     </head>
     <body>
-       <div id="app">
+       <div id="root">
            <div id="section-left">
                <div class="user-name">
-                    <div id="avatar-io">
-                        <img src="img/avatar_io.jpg" alt="io">
-                        <h4>Nome Utente</h4>
+                    <div class="avatar-img">
+                        <img class="avatar" src="img/avatar_io.jpg" alt="io">
+                        <h4>Alessandra Schiavone</h4>
                     </div>
                     <div class="functions">
                         <i class="fas fa-circle-notch"></i>
@@ -35,8 +36,43 @@
                     <i class="fas fa-search"></i>
                    <input type="text" placeholder="Cerca o inizia una nuova chat"> 
                </div>
+               <div id="contacts">
+                   <div v-for="(contact, index) in contacts" class="contact ">
+                        <img class="avatar " :src="getImage(index)" alt="">
+                        <div class="info">
+                            <h3>{{ contact.name }}</h3>
+                            <h5>Messaggio</h5>
+                        </div>
+                       <div class="data-ora">
+                            <h5>10/01/2020 16:15:22</h5>
+                       </div>
+                   </div>
+               </div>
            </div>
-           <div id="section-right"></div>
+           <div id="section-right">
+            <div class="user-name">
+                <div class="avatar-img">
+                    <img class="avatar" src="img/avatar_1.jpg" alt="">
+                    <div class="info">
+                        <h4>Michele</h4>
+                        <h5>Ultimo accesso oggi alle 10/01/2020 16:15:22</h5>
+                    </div>       
+                </div>
+                <div class="functions">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-paperclip"></i>
+                    <i class="fas fa-ellipsis-v"></i>                    
+                </div>
+            </div>
+            <div id="chat-now">
+
+            </div>
+            <div id="insert-text">
+
+            </div>
+
+
        </div>
+    <script src="js/script.js"></script>
     </body>
 </html>

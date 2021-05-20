@@ -9,7 +9,7 @@ body{
     background: linear-gradient(to bottom,
     #009688 15%,#D8DBD6 15% 85% );
 }
-#app{
+#root{
     display:flex;
     height:calc(100% - 40px);
     width:80%;
@@ -27,23 +27,23 @@ body{
     justify-content: space-between;
     background-color: #EAEAEA;
 }
-#avatar-io{
+.avatar-img{
     display: flex;
     align-items: center;
     width:50%;
     padding: 8px 15px;
 }
-#avatar-io > img{
+.avatar{
     height:100%;
     border-radius: 50%;
 }
-#avatar-io > h4{
+.avatar-img > h4{
    padding: 0px 5px;
 }
 .functions{
     width:50%;
     line-height: 70px;
-    padding: 0 20px;
+    padding: 0 10px;
     text-align:right ;
 }
 .functions > i {
@@ -89,3 +89,40 @@ body{
     margin:10px 5px;
     padding:10px 50px;
 }
+#contacts{
+    height:calc(100% - 207px);
+    overflow-y: scroll;
+}
+.contact{
+    display: flex;
+    height:80px;
+    padding: 10px 15px;
+    border-top:1px solid #dddbdb;
+}
+.contact > .info{
+    padding:0 10px;
+    width:60%;
+}
+.info h5{
+    color:#BFC4C6;
+}
+.contact-active{
+    background-color: #E9EBEB;
+}
+#section-right{
+    width:75%;
+    display: flex;
+    flex-direction: column;
+}
+#chat-now{
+    height:calc(100% - 150px);
+    overflow-y: scroll;
+    background-image: url(../img/mine.jpg);
+}
+#insert-text{
+    display: flex;
+    justify-content: space-around;
+    background-color: #F3EEEA;
+    height:80px;
+}
+
