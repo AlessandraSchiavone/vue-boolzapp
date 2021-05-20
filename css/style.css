@@ -47,6 +47,7 @@ body{
     text-align:right ;
 }
 .functions > i {
+    cursor: pointer;
     vertical-align: middle;
     color:#B1B1B1;
     font-size: 22px;
@@ -114,15 +115,62 @@ body{
     display: flex;
     flex-direction: column;
 }
-#chat-now{
-    height:calc(100% - 150px);
-    overflow-y: scroll;
-    background-image: url(../img/mine.jpg);
-}
 #insert-text{
     display: flex;
     justify-content: space-around;
+    align-items: center;
     background-color: #F3EEEA;
     height:80px;
+}
+#insert-text > input {
+    margin:15px 0px;
+    padding:10px;
+    border:1px solid #dddbdb;
+    border-radius: 5px;
+    width:80%;
+}
+#insert-text > i{
+    cursor: pointer;
+    text-align: center;
+    font-size: 28px;
+    color:#6B7376;
+    padding:0px 40px;
+}
+#chat-now{
+    height:calc(100% - 150px);
+    padding:40px 60px;
+    overflow-y: scroll;
+    background-image: url(../img/mine.jpg);
+}
+.message-sent{ 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;   
+}
+.message-received{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;  
+}
+.message{
+    position:relative;
+    padding:18px 10px;
+    margin:5px;
+    border-radius: 10px;
+}
+.data-ora{
+    padding:5px;
+    color:#BFC4C6;
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+.sent{
+    width:40%;
+    background-color: #D5F9BA;
+} 
+.received{
+    width:40%;
+    background-color: #FFFFFF;
 }
 
