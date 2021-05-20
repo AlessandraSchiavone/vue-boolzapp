@@ -121,11 +121,10 @@ body{
     justify-content: space-around;
     align-items: center;
     background-color: #F3EEEA;
-    height:80px;
+    height:70px;
 }
 #insert-text > input {
-    margin:15px 0px;
-    padding:10px;
+    padding:20px 10px;
     border:1px solid #dddbdb;
     border-radius: 5px;
     width:80%;
@@ -138,7 +137,7 @@ body{
     padding:0px 40px;
 }
 #chat-now{
-    height:calc(100% - 150px);
+    height:calc(100% - 140px);
     padding:40px 60px;
     overflow-y: scroll;
     background-image: url(../img/mine.jpg);
