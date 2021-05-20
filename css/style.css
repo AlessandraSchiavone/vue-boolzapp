@@ -1,0 +1,91 @@
+*{
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    background: linear-gradient(to bottom,
+    #009688 15%,#D8DBD6 15% 85% );
+}
+#app{
+    display:flex;
+    height:calc(100% - 40px);
+    width:80%;
+    margin: 20px auto;
+    background-color: white;
+}
+#section-left{
+    width:35%;
+    background-color: white;
+    border-right: 1px solid #dddbdb ;
+}
+.user-name{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #EAEAEA;
+}
+#avatar-io{
+    display: flex;
+    align-items: center;
+    width:50%;
+    padding: 8px 15px;
+}
+#avatar-io > img{
+    height:100%;
+    border-radius: 50%;
+}
+#avatar-io > h4{
+   padding: 0px 5px;
+}
+.functions{
+    width:50%;
+    line-height: 70px;
+    padding: 0 20px;
+    text-align:right ;
+}
+.functions > i {
+    vertical-align: middle;
+    color:#B1B1B1;
+    font-size: 22px;
+    padding:0 10px;
+}
+#notifications{
+    display: flex; 
+    align-items: center;
+    padding:15px 20px;
+    height: 80px;
+    background-color: #8EDAFC;
+}
+#notifications > .fa-bell-slash{
+    padding: 12px 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    color:#8EDAFC;
+    background-color: #F2FBFF;
+}
+#notifications > div{
+    padding:0px 10px;
+    letter-spacing: 0.4px;
+}
+#notifications > div >  h5 {
+    text-decoration: underline;
+    color:#6395AB;
+}
+#search{
+    position:relative;
+}
+#search .fa-search{
+    color:#B1B1B1;
+    position:absolute;
+    left:18px;
+    bottom:20px;
+}
+#search input{
+    width:calc(100% - 10px);
+    border:1px solid #dddbdb;
+    margin:10px 5px;
+    padding:10px 50px;
+}
