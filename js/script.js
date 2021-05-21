@@ -87,6 +87,7 @@ var app = new Vue (
                     ],
                 },
             ],
+            time:'',
             activeIndex:0,
             currentDate:"",
             newMessage:{
@@ -94,9 +95,6 @@ var app = new Vue (
                 text:'',
                 status:'sent'
             }
-        },
-        created: function() {
-            this.currentDate = dayjs().format('DD/MM/YYYY HH:mm:ss');  
         },
         methods:{
             getImage: function(indexContacts){
@@ -111,7 +109,6 @@ var app = new Vue (
             },
             getLastDateAccess: function(contact){
                 var Message = contact.messages;
-                console.log(Message);
                 var MessageReceived = Message.filter(
                     (element) => {
                    return element.status == "received";
@@ -124,8 +121,10 @@ var app = new Vue (
             },
             addNewMessage: function(){
                 if(this.newMessage.text.trim().length > 0){
-                    this.contacts[this.activeIndex].messages.push(this.newMessage);
-                    this.newMessage.date = this.currentDate; 
+                    this.contacts[this.activeIndex].messages.push(this.newMessage); 
+                    this.currentDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
+                    this.newMessage.date = this.currentDate;
+                    console.log(this.time);
                      this.newMessage = {
                          date: '',
                          text:'',
