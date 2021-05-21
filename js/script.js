@@ -96,7 +96,7 @@ var app = new Vue (
             }
         },
         created: function() {
-            this.currentDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
+            this.currentDate = dayjs().format('DD/MM/YYYY HH:mm:ss');  
         },
         methods:{
             getImage: function(indexContacts){
@@ -109,14 +109,24 @@ var app = new Vue (
             getLastDate: function(contact){
                 return contact.messages[contact.messages.length - 1].date;
             },
+            getLastDateAccess: function(contact){
+                var Message = contact.messages;
+                console.log(Message);
+                var MessageReceived = Message.filter(
+                    (element) => {
+                   return element.status == "received";
+                }
+                );
+                return MessageReceived[MessageReceived.length - 1].date;
+            },
             getLastMex: function(contact){
                 return contact.messages[contact.messages.length - 1].text.substring(0,30)+"...";
             },
             addNewMessage: function(){
                 if(this.newMessage.text.trim().length > 0){
                     this.contacts[this.activeIndex].messages.push(this.newMessage);
-                    this.newMessage.date = this.currentDate;
-                    this.newMessage = {
+                    this.newMessage.date = this.currentDate; 
+                     this.newMessage = {
                          date: '',
                          text:'',
                          status:'sent'
