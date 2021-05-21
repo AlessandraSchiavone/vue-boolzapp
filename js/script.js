@@ -97,8 +97,11 @@ var app = new Vue (
             setActive: function(newIndex){
                 this.activeIndex = newIndex;
             },
+            getLastDate: function(contact){
+                return contact.messages[contact.messages.length - 1].date;
+            },
             getLastMex: function(contact){
-                return contact.messages[contact.messages.length - 1];
+                return contact.messages[contact.messages.length - 1].text.substring(0,30)+"...";
             }
         }
     }

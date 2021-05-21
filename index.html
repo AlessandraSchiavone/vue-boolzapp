@@ -10,6 +10,8 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <title>Vue Boolzapp</title>
+        <link rel="shortcut icon" type="image/jpg" href="img/whatsa.jpg"/>
+
     </head>
     <body>
        <div id="root">
@@ -43,10 +45,10 @@
                         <img class="avatar " :src="getImage(index)" alt="">
                         <div class="info">
                             <h3>{{ contact.name }}</h3>
-                            <h5>{{getLastMex(contact).text}}</h5>
+                            <h5>{{ getLastMex(contact) }}</h5>
                         </div>
                        <div>
-                            <h5>{{getLastMex(contact).date}}</h5>
+                            <h5>{{ getLastDate(contact) }}</h5>
                        </div>
                    </div>
                </div>
@@ -54,10 +56,10 @@
            <div id="section-right">
             <div class="user-name">
                 <div class="avatar-img">
-                    <img class="avatar" src="img/avatar_1.jpg" alt="">
+                    <img class="avatar" :src="getImage(activeIndex)" alt="">
                     <div class="info">
-                        <h4>Michele</h4>
-                        <h5>Ultimo accesso oggi alle 10/01/2020 16:15:22</h5>
+                        <h3>{{ contacts[activeIndex].name }}</h3>
+                        <h5>Ultimo accesso oggi alle {{ getLastDate(contacts[activeIndex]) }} </h5>
                     </div>       
                 </div>
                 <div class="functions">
@@ -67,42 +69,16 @@
                 </div>
             </div>
             <div id="chat-now">
-                <div class="message-sent">
-                    <div class="message sent ">
-                        <p>Hai portato a spasso il cane?</p>
+                <div v-for= "message in contacts[activeIndex].messages"
+                :class="(message.status == 'sent') ? 'message-sent' : 'message-received' "> 
+                    <div :class="(message.status == 'sent') ? 'sent' : 'received' "
+                    class="text ">
+                        <p>{{ message.text }}</p>
                         <h6 class="data-ora">
-                            10/01/2020 15:30:55
-                        </h6>
-                    </div>
-                    <div class="message sent">
-                        <p>Ricordati di dargli da mangiare</p>
-                        <h6 class="data-ora">
-                            10/01/2020 15:50:00
+                            {{ message.date }}
                         </h6>
                     </div>
                 </div>
-                <div class="message-received">
-                    <div class="message received">
-                        <p>Tutto fatto!</p>
-                        <h6 class="data-ora">
-                            10/01/2020 16:10:22
-                        </h6>
-                    </div>
-                    <div class="message received">
-                        <p>A domani</p>
-                        <h6 class="data-ora">
-                            10/01/2020 16:15:22
-                        </h6>
-                    </div>
-                </div>  
-                <div class="message-sent">
-                    <div class="message sent ">
-                        <p>Ok! Ciao</p>
-                        <h6 class="data-ora">
-                            10/01/2020 17:30:55
-                        </h6>
-                    </div>
-                </div>  
             </div>
             <div id="insert-text">
                 <i class="far fa-smile"></i>
