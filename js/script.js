@@ -87,7 +87,16 @@ var app = new Vue (
                     ],
                 },
             ],
-            activeIndex:0
+            activeIndex:0,
+            currentDate:"",
+            newMessage:{
+                date:"",
+                text:'',
+                status:'sent'
+            }
+        },
+        created: function() {
+            this.currentDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
         },
         methods:{
             getImage: function(indexContacts){
@@ -102,6 +111,17 @@ var app = new Vue (
             },
             getLastMex: function(contact){
                 return contact.messages[contact.messages.length - 1].text.substring(0,30)+"...";
+            },
+            addNewMessage: function(){
+                if(this.newMessage.text.trim().length > 0){
+                    this.contacts[this.activeIndex].messages.push(this.newMessage);
+                    this.newMessage.date = this.currentDate;
+                    this.newMessage = {
+                         date: '',
+                         text:'',
+                         status:'sent'
+                     };
+                }
             }
         }
     }

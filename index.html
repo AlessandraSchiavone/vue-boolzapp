@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <title>Vue Boolzapp</title>
         <link rel="shortcut icon" type="image/jpg" href="img/whatsa.jpg"/>
@@ -54,7 +55,7 @@
                </div>
            </div>
            <div id="section-right">
-            <div class="user-name">
+             <div class="user-name">
                 <div class="avatar-img">
                     <img class="avatar" :src="getImage(activeIndex)" alt="">
                     <div class="info">
@@ -67,8 +68,8 @@
                     <i class="fas fa-paperclip"></i>
                     <i class="fas fa-ellipsis-v"></i>                    
                 </div>
-            </div>
-            <div id="chat-now">
+             </div>
+             <div id="chat-now">
                 <div v-for= "message in contacts[activeIndex].messages"
                 :class="(message.status == 'sent') ? 'message-sent' : 'message-received' "> 
                     <div :class="(message.status == 'sent') ? 'sent' : 'received' "
@@ -79,15 +80,13 @@
                         </h6>
                     </div>
                 </div>
-            </div>
-            <div id="insert-text">
+             </div>
+             <div id="insert-text">
                 <i class="far fa-smile"></i>
-                <input type="text" placeholder="Scrivi un messaggio">
+                <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage.text" @keydown.enter = "addNewMessage()">
                 <i class="fas fa-microphone"></i>
-            </div>
-
-
-       </div>
+             </div>
+           </div>
     <script src="js/script.js"></script>
     </body>
 </html>
