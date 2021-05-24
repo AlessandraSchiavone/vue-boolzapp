@@ -38,7 +38,7 @@
                </div>
                <div id="search">
                     <i class="fas fa-search"></i>
-                   <input type="text"  placeholder="Cerca o inizia una nuova chat" v-model="search" @keydown.enter = "chatContact()"> 
+                   <input type="text"  placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup = "chatContact()"> 
                </div>
                <div id="contacts">
                 <div v-for="(contact, index) in contacts" class="contact"
