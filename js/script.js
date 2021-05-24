@@ -135,7 +135,21 @@ var app = new Vue (
                     },1000); 
                    this.newMessage.text = ""; 
                 }
+            },
+            chatContact: function(){
+                var control = this.search.toLowerCase();
+                console.log(control);
+                this.contacts.forEach(element => {
+                    if(element.name.toLowerCase().includes(control)){
+                        element.visible = 'true';
+                    }else{
+                        element.visible = 'false';
+                    }
+                });
+                console.log(this.contacts);
             }
-        }
+        },
+       
     }
+            
 );

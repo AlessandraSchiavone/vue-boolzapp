@@ -38,12 +38,16 @@
                </div>
                <div id="search">
                     <i class="fas fa-search"></i>
-                   <input type="text" placeholder="Cerca o inizia una nuova chat"> 
+                   <input type="text"  placeholder="Cerca o inizia una nuova chat" v-model="search" @keydown.enter = "chatContact()"> 
                </div>
                <div id="contacts">
-                   <div v-for="(contact, index) in contacts" class="contact"
-                   :class="(index == activeIndex) ? 'contact-active' : '' "
-                   @click="setActive(index)">
+                <div v-for="(contact, index) in contacts" class="contact"
+                :class="{
+                    'contact-active': index == activeIndex,
+                    'no-visible' : contact.visible == 'false'
+                }
+                "
+                @click="setActive(index)">
                         <img class="avatar " :src="getImage(index)" alt="">
                         <div class="info">
                             <h3>{{ contact.name }}</h3>

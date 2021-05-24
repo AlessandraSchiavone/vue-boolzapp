@@ -101,6 +101,10 @@ body{
     height:80px;
     padding: 10px 15px;
     border-top:1px solid #dddbdb;
+    
+}
+.no-visible{
+    display: none;
 }
 .contact > .info{
     padding:0 10px;
