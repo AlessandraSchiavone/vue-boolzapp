@@ -92,7 +92,7 @@ var app = new Vue (
                 date:"",
                 text:'',
                 status:'sent'
-            }
+            },
         },
         methods:{
             getImage: function(indexContacts){
@@ -119,15 +119,21 @@ var app = new Vue (
             getLastMex: function(contact){
                 return contact.messages[contact.messages.length - 1].text.substring(0,30)+"...";
             },
-            addNewMessage: function(){
+            addNewMessage: function(contact){
                 if(this.newMessage.text.trim().length > 0){
-                    this.contacts[this.activeIndex].messages.push(this.newMessage); 
-                    this.newMessage.date = dayjs().format('DD/MM/YYYY HH:mm:ss');
-                     this.newMessage = {
-                         date: '',
-                         text:'',
-                         status:'sent'
-                     };
+                    contact.messages.push({
+                        date:dayjs().format('DD/MM/YYYY HH:mm:ss'),
+                        text: this.newMessage.text,
+                        status:'sent'
+                    })
+                    setTimeout(() =>{
+                        this.contacts[this.activeIndex].messages.push({
+                            date:dayjs().format('DD/MM/YYYY HH:mm:ss'),
+                            text: 'ok',
+                            status:'received'
+                        })
+                    },1000); 
+                   this.newMessage.text = ""; 
                 }
             }
         }

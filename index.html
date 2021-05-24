@@ -11,7 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue-chat-scroll/dist/vue-chat-scroll.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <title>Vue Boolzapp</title>
+        <title>BoolzApp</title>
         <link rel="shortcut icon" type="image/jpg" href="img/whatsa.jpg"/>
 
     </head>
@@ -30,7 +30,7 @@
                     </div>
                </div>
                <div id="notifications">
-                <i class="fas fa-bell-slash"></i>
+                <i class="fas fa-bell-slash" ></i>
                     <div>
                        <h4>Ricevi notifiche di nuovi messaggi</h4>  
                        <h5>Attiva notifiche desktop</h5>
@@ -66,7 +66,6 @@
                 </div>
                 <div class="functions">
                     <i class="fas fa-search"></i>
-                    <i class="fas fa-paperclip"></i>
                     <i class="fas fa-ellipsis-v"></i>                    
                 </div>
              </div>
@@ -83,8 +82,12 @@
                 </div>
              </div>
              <div id="insert-text">
-                <i class="far fa-smile"></i>
-                <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage.text" @keydown.enter = "addNewMessage()" >
+                <div>
+                    <i class="far fa-smile"></i>
+                    <i class="fas fa-paperclip"></i>
+                </div>
+                
+                <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage.text" @keydown.enter = "addNewMessage(contacts[activeIndex])" >
                 <i class="fas fa-microphone"></i>
              </div>
            </div>
