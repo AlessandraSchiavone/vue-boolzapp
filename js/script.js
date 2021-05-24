@@ -87,9 +87,7 @@ var app = new Vue (
                     ],
                 },
             ],
-            time:'',
             activeIndex:0,
-            currentDate:"",
             newMessage:{
                 date:"",
                 text:'',
@@ -122,9 +120,7 @@ var app = new Vue (
             addNewMessage: function(){
                 if(this.newMessage.text.trim().length > 0){
                     this.contacts[this.activeIndex].messages.push(this.newMessage); 
-                    this.currentDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
-                    this.newMessage.date = this.currentDate;
-                    console.log(this.time);
+                    this.newMessage.date = dayjs().format('DD/MM/YYYY HH:mm:ss');
                      this.newMessage = {
                          date: '',
                          text:'',

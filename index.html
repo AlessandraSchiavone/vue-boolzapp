@@ -9,6 +9,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-chat-scroll/dist/vue-chat-scroll.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <title>Vue Boolzapp</title>
         <link rel="shortcut icon" type="image/jpg" href="img/whatsa.jpg"/>
@@ -69,11 +70,11 @@
                     <i class="fas fa-ellipsis-v"></i>                    
                 </div>
              </div>
-             <div id="chat-now">
+             <div id="chat-now" v-chat-scroll>
                 <div v-for= "message in contacts[activeIndex].messages"
                 :class="(message.status == 'sent') ? 'message-sent' : 'message-received' "> 
                     <div :class="(message.status == 'sent') ? 'sent' : 'received' "
-                    class="text ">
+                    class="text" >
                         <p>{{ message.text }}</p>
                         <h6 class="data-ora">
                             {{ message.date }}
@@ -83,7 +84,7 @@
              </div>
              <div id="insert-text">
                 <i class="far fa-smile"></i>
-                <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage.text" @keydown.enter = "addNewMessage()">
+                <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage.text" @keydown.enter = "addNewMessage()" >
                 <i class="fas fa-microphone"></i>
              </div>
            </div>

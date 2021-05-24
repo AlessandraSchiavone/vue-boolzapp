@@ -171,11 +171,11 @@ body{
     right:0;
 }
 .sent{
-    width:40%;
+    width:50%; 
     background-color: #D5F9BA;
 } 
 .received{
-    width:40%;
+    width:50%;
     background-color: #FFFFFF;
 }
 
