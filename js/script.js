@@ -112,7 +112,9 @@ var app = new Vue (
                    return element.status == "received";
                 }
                 );
-                return MessageReceived[MessageReceived.length - 1].date;
+                var DataTime = MessageReceived[MessageReceived.length - 1].date.split(" ");
+                return DataTime[1] +" il "+ DataTime[0];
+                // return MessageReceived[MessageReceived.length - 1].date;
             },
             getLastMex: function(contact){
                 return contact.messages[contact.messages.length - 1].text.substring(0,30)+"...";
