@@ -174,12 +174,10 @@ var app = new Vue (
             },
             del: function(index){
                 this.contacts[this.activeIndex].messages.splice(index,1);
-                console.log(this.contacts[this.activeIndex].messages);
                 // this.$delete(this.contacts[this.activeIndex].messages, index);
                 if (this.contacts[this.activeIndex].messages.length == 0) { 
                     this.contacts.splice(this.activeChatIndex, 1);
                 }
-                console.log(this.contacts[this.activeIndex].messages);
                 this.dropdownOpen = false;
             },
             view: function(index){
@@ -203,7 +201,6 @@ var app = new Vue (
             },
             darkTheme: function() {
                 this.dark = !this.dark;
-                console.log(this.dark);
             }
             
         },
