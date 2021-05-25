@@ -17,8 +17,8 @@
     </head>
     <body>
        <div id="root">
-           <div class="section-left" >
-               <div class="user-name">
+           <div class="section-left" :class="{'section-dark': dark == true}" >
+               <div class="user-name" :class="{'user-name-dark': dark == true}">
                     <div class="avatar-img">
                         <img class="avatar" src="img/avatar_io.jpg" alt="io">
                         <h4>Alessandra Schiavone</h4>
@@ -29,8 +29,8 @@
                         <i class="fas fa-ellipsis-v"></i>                    
                     </div>
                </div>
-               <div id="notifications">
-                <i class="fas fa-bell-slash" ></i>
+               <div class="notifications" :class="{'notifications-dark': dark == true}">
+                <i class="fas fa-bell-slash" :class="{'notifications-dark': dark == true}" ></i>
                     <div>
                        <h4>Ricevi notifiche di nuovi messaggi</h4>  
                        <h5>Attiva notifiche desktop</h5>
@@ -44,6 +44,7 @@
                     <div v-for="(contact, index) in contacts" class="contact"
                         :class="{
                          'contact-active': index == activeIndex,
+                         'contact-active-dark': index == activeIndex && dark == true,   
                         'no-visible' : contact.visible == 'false'
                      }
                         "
@@ -60,7 +61,7 @@
                </div>
            </div>
            <div class="section-right">
-             <div class="user-name">
+             <div class="user-name" :class="{'user-name-dark': dark == true}">
                 <div class="avatar-img">
                     <img class="avatar" :src="getImage(activeIndex)" alt="">
                     <div class="info">
@@ -76,7 +77,13 @@
              <div class="chat-now" :class="{'chat-dark': dark == true}" v-chat-scroll>
                 <div v-for= "(message,index) in contacts[activeIndex].messages"
                 :class="(message.status == 'sent') ? 'message-sent' : 'message-received'"> 
-                    <div :class="(message.status == 'sent') ? 'sent' : 'received' "
+                    <div :class="{
+                        'sent': (message.status == 'sent'),
+                        'received': (message.status == 'received'),
+                        'sent-dark': (message.status == 'sent') && dark == true,
+                        'received-dark': (message.status == 'received') && dark == true,
+                    }
+                        "
                     class="text" >
                         <p>{{ message.text }}</p>
                         <i  class="fas fa-chevron-down"
@@ -94,7 +101,7 @@
                     </div>
                 </div>
         </div>
-        <div id="insert-text">
+        <div class="insert-text" :class="{'insert-text-dark': dark == true}">
             <div>
                 <i class="far fa-smile"></i>
                 <i class="fas fa-paperclip"></i>
