@@ -38,16 +38,16 @@
                </div>
                <div id="search">
                     <i class="fas fa-search"></i>
-                   <input type="text"  placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup = "chatContact()"> 
+                   <input type="text"  placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup = "chatContact"> 
                </div>
                <div id="contacts">
-                <div v-for="(contact, index) in contacts" class="contact"
-                :class="{
-                    'contact-active': index == activeIndex,
-                    'no-visible' : contact.visible == 'false'
-                }
-                "
-                @click="setActive(index)">
+                    <div v-for="(contact, index) in contacts" class="contact"
+                        :class="{
+                         'contact-active': index == activeIndex,
+                        'no-visible' : contact.visible == 'false'
+                     }
+                        "
+                        @click="setActive(index)">
                         <img class="avatar " :src="getImage(index)" alt="">
                         <div class="info">
                             <h3>{{ contact.name }}</h3>
@@ -74,27 +74,37 @@
                 </div>
              </div>
              <div id="chat-now" v-chat-scroll>
-                <div v-for= "message in contacts[activeIndex].messages"
+                <div v-for= "(message,index) in contacts[activeIndex].messages"
                 :class="(message.status == 'sent') ? 'message-sent' : 'message-received' "> 
                     <div :class="(message.status == 'sent') ? 'sent' : 'received' "
                     class="text" >
                         <p>{{ message.text }}</p>
+                        <i  class="fas fa-chevron-down"
+                                @click="dropdownToggle(index)"></i>
                         <h6 class="data-ora">
-                            {{ message.date }}
+                                {{ message.date }}
                         </h6>
+                        <div class="dropdown" 
+                         v-show= "dropdownOpen == true && msgIndex == index">
+                            <div class="dropdown-content">
+                                <span>Info messaggio</span>
+                                <span @click="del(index)">Cancella messaggio</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-             </div>
-             <div id="insert-text">
-                <div>
-                    <i class="far fa-smile"></i>
-                    <i class="fas fa-paperclip"></i>
-                </div>
-                
-                <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage.text" @keydown.enter = "addNewMessage(contacts[activeIndex])" >
-                <i class="fas fa-microphone"></i>
-             </div>
+        </div>
+        <div id="insert-text">
+            <div>
+                <i class="far fa-smile"></i>
+                <i class="fas fa-paperclip"></i>
+            </div>
+            
+            <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage.text" @keydown.enter = "addNewMessage(contacts[activeIndex])" >
+            <i class="fas fa-microphone"></i>
+        </div>
            </div>
+        </div>
     <script src="js/script.js"></script>
     </body>
 </html>
