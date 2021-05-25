@@ -108,6 +108,7 @@ var app = new Vue (
             msgIndex: 0,
             dropdownOpen: false,
             search: "",
+            dark: false
         },
         methods:{
             getImage: function(indexContacts){
@@ -121,7 +122,7 @@ var app = new Vue (
                 return contact.messages[contact.messages.length - 1].date;
             },
             getLastDateAccess: function(contact){
-                var Message = contact.messages;
+                let Message = contact.messages;
                 let MessageReceived = Message.filter(
                     (element) => {
                    return element.status == "received";
@@ -199,9 +200,12 @@ var app = new Vue (
                         }`
                          );   
                 }
-                
-               
+            },
+            darkTheme: function() {
+                this.dark = !this.dark;
+                console.log(this.dark);
             }
+            
         },
        
     }

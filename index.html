@@ -17,14 +17,14 @@
     </head>
     <body>
        <div id="root">
-           <div id="section-left">
+           <div class="section-left" >
                <div class="user-name">
                     <div class="avatar-img">
                         <img class="avatar" src="img/avatar_io.jpg" alt="io">
                         <h4>Alessandra Schiavone</h4>
                     </div>
                     <div class="functions">
-                        <i class="fas fa-circle-notch"></i>
+                        <i @click= "darkTheme" class="fas fa-moon"></i>
                         <i class="fas fa-comment-alt"></i>
                         <i class="fas fa-ellipsis-v"></i>                    
                     </div>
@@ -40,7 +40,7 @@
                     <i class="fas fa-search"></i>
                    <input type="text"  placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup = "chatContact"> 
                </div>
-               <div id="contacts">
+               <div id="contacts" >
                     <div v-for="(contact, index) in contacts" class="contact"
                         :class="{
                          'contact-active': index == activeIndex,
@@ -59,7 +59,7 @@
                    </div>
                </div>
            </div>
-           <div id="section-right">
+           <div class="section-right">
              <div class="user-name">
                 <div class="avatar-img">
                     <img class="avatar" :src="getImage(activeIndex)" alt="">
@@ -73,9 +73,9 @@
                     <i class="fas fa-ellipsis-v"></i>                    
                 </div>
              </div>
-             <div id="chat-now" v-chat-scroll>
+             <div class="chat-now" :class="{'chat-dark': dark == true}" v-chat-scroll>
                 <div v-for= "(message,index) in contacts[activeIndex].messages"
-                :class="(message.status == 'sent') ? 'message-sent' : 'message-received' "> 
+                :class="(message.status == 'sent') ? 'message-sent' : 'message-received'"> 
                     <div :class="(message.status == 'sent') ? 'sent' : 'received' "
                     class="text" >
                         <p>{{ message.text }}</p>

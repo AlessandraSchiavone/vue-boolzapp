@@ -9,6 +9,10 @@ body{
     background: linear-gradient(to bottom,
     #009688 15%,#D8DBD6 15% 85% );
 }
+.body-dark{
+    background: linear-gradient(to bottom,
+    #009688 15%,#313131 15% 85% );
+}
 #root{
     display:flex;
     height:calc(100% - 40px);
@@ -16,11 +20,13 @@ body{
     margin: 20px auto;
     background-color: white;
 }
-#section-left{
+
+.section-left{
     width:35%;
     background-color: white;
     border-right: 1px solid #dddbdb ;
 }
+
 .user-name{
     height: 70px;
     display: flex;
@@ -121,7 +127,7 @@ body{
 .contact-active{
     background-color: #E9EBEB;
 }
-#section-right{
+.section-right{
     width:75%;
     display: flex;
     flex-direction: column;
@@ -151,11 +157,14 @@ body{
 #insert-text  i{
     padding:8px; 
 }
-#chat-now{
+.chat-now{
     height:calc(100% - 130px);
     padding:40px 60px;
     overflow-y: scroll;
     background-image: url(../img/mine.jpg);
+}
+.chat-dark{
+    background-image: url(../img/minedark.jpg);
 }
 .message-sent{
     display: flex;
