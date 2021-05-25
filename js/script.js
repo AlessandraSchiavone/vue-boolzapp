@@ -130,10 +130,10 @@ var app = new Vue (
                 );
                 if (MessageReceived.length > 0) {
                     let DataTime = MessageReceived[MessageReceived.length - 1].date.split(" ");
-                    return DataTime[1] +" il "+ DataTime[0];
+                    return `Ultimo accesso alle ${DataTime[1]} il ${DataTime[0]}` ;
                     // return MessageReceived[MessageReceived.length - 1].date;
                 } else {
-                    return "";
+                    return "Sta Scrivendo...";
                 }
             },
             getLastMex: function(contact){
