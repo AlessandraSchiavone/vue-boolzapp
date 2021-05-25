@@ -3,22 +3,22 @@
     padding:0;
     margin:0;
 }
-body{
+.wrapper{
     font-family: 'Roboto', sans-serif;
     height: 100vh;
+    padding:20px;
     background: linear-gradient(to bottom,
     #009688 15%,#D8DBD6 15% 85% ); 
-    
 }
-/* body-dark{
+.wrapper-dark{
     background: linear-gradient(to bottom,
     #009688 15%,black 15% 85% );
-} */
-#root{
+}
+.container{
     display:flex;
     height:calc(100% - 40px);
     width:80%;
-    margin: 20px auto;
+    margin: 0px auto;
     background-color: white;
 }
 .section-left{

@@ -17,99 +17,103 @@
     </head>
     <body>
        <div id="root">
-           <div class="section-left" :class="{'section-dark': dark == true}" >
-               <div class="user-name" :class="{'user-name-dark': dark == true}">
-                    <div class="avatar-img">
-                        <img class="avatar" src="img/avatar_io.jpg" alt="io">
-                        <h4>Alessandra Schiavone</h4>
-                    </div>
-                    <div class="functions">
-                        <i @click= "darkTheme" class="fas fa-moon"></i>
-                        <i class="fas fa-comment-alt"></i>
-                        <i class="fas fa-ellipsis-v"></i>                    
-                    </div>
-               </div>
-               <div class="notifications" :class="{'notifications-dark': dark == true}">
-                <i class="fas fa-bell-slash" :class="{'notifications-dark': dark == true}" ></i>
-                    <div>
-                       <h4>Ricevi notifiche di nuovi messaggi</h4>  
-                       <h5>Attiva notifiche desktop</h5>
-                    </div>
-               </div>
-               <div id="search">
-                    <i class="fas fa-search"></i>
-                   <input type="text"  placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup = "chatContact"> 
-               </div>
-               <div id="contacts" >
-                    <div v-for="(contact, index) in contacts" class="contact"
-                        :class="{
-                         'contact-active': index == activeIndex,
-                         'contact-active-dark': index == activeIndex && dark == true,   
-                        'no-visible' : contact.visible == 'false'
-                     }
-                        "
-                        @click="setActive(index)">
-                        <img class="avatar " :src="getImage(index)" alt="">
-                        <div class="info">
-                            <h3>{{ contact.name }}</h3>
-                            <h5>{{ getLastMex(contact) }}</h5>
+           <div class="wrapper" :class="{'wrapper-dark': dark == true}">
+                <div class="container">
+                    <div class="section-left" :class="{'section-dark': dark == true}" >
+                        <div class="user-name" :class="{'user-name-dark': dark == true}">
+                            <div class="avatar-img">
+                                <img class="avatar" src="img/avatar_io.jpg" alt="io">
+                                <h4>Alessandra Schiavone</h4>
+                            </div>
+                            <div class="functions">
+                                <i @click= "darkTheme" class="fas fa-moon"></i>
+                                <i class="fas fa-comment-alt"></i>
+                                <i class="fas fa-ellipsis-v"></i>                    
+                            </div>
                         </div>
-                       <div>
-                            <h5>{{ getLastDate(contact) }}</h5>
-                       </div>
-                   </div>
-               </div>
-           </div>
-           <div class="section-right">
-             <div class="user-name" :class="{'user-name-dark': dark == true}">
-                <div class="avatar-img">
-                    <img class="avatar" :src="getImage(activeIndex)" alt="">
-                    <div class="info">
-                        <h3>{{ contacts[activeIndex].name }}</h3>
-                        <h5> {{ getLastDateAccess(contacts[activeIndex]) }} </h5>
-                    </div>       
-                </div>
-                <div class="functions">
-                    <i class="fas fa-search"></i>
-                    <i class="fas fa-ellipsis-v"></i>                    
-                </div>
-             </div>
-             <div class="chat-now" :class="{'chat-dark': dark == true}" v-chat-scroll>
-                <div v-for= "(message,index) in contacts[activeIndex].messages"
-                :class="(message.status == 'sent') ? 'message-sent' : 'message-received'"> 
-                    <div :class="{
-                        'sent': (message.status == 'sent'),
-                        'received': (message.status == 'received'),
-                        'sent-dark': (message.status == 'sent') && dark == true,
-                        'received-dark': (message.status == 'received') && dark == true,
-                    }
-                        "
-                    class="text" >
-                        <p>{{ message.text }}</p>
-                        <i  class="fas fa-chevron-down"
-                                @click="dropdownToggle(index)"></i>
-                        <h6 class="data-ora">
-                                {{ message.date }}
-                        </h6>
-                        <div class="dropdown" 
-                         v-show= "dropdownOpen == true && msgIndex == index">
-                            <div class="dropdown-content">
-                                <span @click="view(index)">Info messaggio</span>
-                                <span @click="del(index)">Cancella messaggio</span>
+                        <div class="notifications" :class="{'notifications-dark': dark == true}">
+                        <i class="fas fa-bell-slash" :class="{'notifications-dark': dark == true}" ></i>
+                            <div>
+                                <h4>Ricevi notifiche di nuovi messaggi</h4>  
+                                <h5>Attiva notifiche desktop</h5>
+                            </div>
+                        </div>
+                        <div id="search">
+                            <i class="fas fa-search"></i>
+                            <input type="text"  placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup = "chatContact"> 
+                        </div>
+                        <div id="contacts" >
+                            <div v-for="(contact, index) in contacts" class="contact"
+                                :class="{
+                                'contact-active': index == activeIndex,
+                                'contact-active-dark': index == activeIndex && dark == true,   
+                                'no-visible' : contact.visible == 'false'
+                            }
+                                "
+                                @click="setActive(index)">
+                                <img class="avatar " :src="getImage(index)" alt="">
+                                <div class="info">
+                                    <h3>{{ contact.name }}</h3>
+                                    <h5>{{ getLastMex(contact) }}</h5>
+                                </div>
+                                <div>
+                                    <h5>{{ getLastDate(contact) }}</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-        </div>
-        <div class="insert-text" :class="{'insert-text-dark': dark == true}">
-            <div>
-                <i class="far fa-smile"></i>
-                <i class="fas fa-paperclip"></i>
-            </div>
-            <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage.text" @keydown.enter = "addNewMessage(contacts[activeIndex])" >
-            <i class="fas fa-microphone"></i>
-        </div>
-           </div>
+                    <div class="section-right">
+                        <div class="user-name" :class="{'user-name-dark': dark == true}">
+                            <div class="avatar-img">
+                                <img class="avatar" :src="getImage(activeIndex)" alt="">
+                                <div class="info">
+                                    <h3>{{ contacts[activeIndex].name }}</h3>
+                                    <h5> {{ getLastDateAccess(contacts[activeIndex]) }} </h5>
+                                </div>       
+                            </div>
+                            <div class="functions">
+                                <i class="fas fa-search"></i>
+                                <i class="fas fa-ellipsis-v"></i>                    
+                            </div>
+                        </div>
+                        <div class="chat-now" :class="{'chat-dark': dark == true}" v-chat-scroll>
+                            <div v-for= "(message,index) in contacts[activeIndex].messages"
+                            :class="(message.status == 'sent') ? 'message-sent' : 'message-received'"> 
+                                <div :class="{
+                                    'sent': (message.status == 'sent'),
+                                    'received': (message.status == 'received'),
+                                    'sent-dark': (message.status == 'sent') && dark == true,
+                                    'received-dark': (message.status == 'received') && dark == true,
+                                }
+                                    "
+                                class="text" >
+                                    <p>{{ message.text }}</p>
+                                    <i  class="fas fa-chevron-down"
+                                            @click="dropdownToggle(index)"></i>
+                                    <h6 class="data-ora">
+                                            {{ message.date }}
+                                    </h6>
+                                    <div class="dropdown" 
+                                    v-show= "dropdownOpen == true && msgIndex == index">
+                                        <div class="dropdown-content">
+                                            <span @click="view(index)">Info messaggio</span>
+                                            <span @click="del(index)">Cancella messaggio</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="insert-text" :class="{'insert-text-dark': dark == true}">
+                            <div>
+                                <i class="far fa-smile"></i>
+                                <i class="fas fa-paperclip"></i>
+                            </div>
+                            <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage.text" @keydown.enter = "addNewMessage(contacts[activeIndex])" >
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                    </div>
+               </div>   
+           </div> 
         </div>
     <script src="js/script.js"></script>
     </body>
