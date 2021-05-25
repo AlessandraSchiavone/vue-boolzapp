@@ -122,13 +122,13 @@ var app = new Vue (
             },
             getLastDateAccess: function(contact){
                 var Message = contact.messages;
-                var MessageReceived = Message.filter(
+                let MessageReceived = Message.filter(
                     (element) => {
                    return element.status == "received";
                 }
                 );
                 if (MessageReceived.length > 0) {
-                    var DataTime = MessageReceived[MessageReceived.length - 1].date.split(" ");
+                    let DataTime = MessageReceived[MessageReceived.length - 1].date.split(" ");
                     return DataTime[1] +" il "+ DataTime[0];
                     // return MessageReceived[MessageReceived.length - 1].date;
                 } else {
@@ -180,6 +180,27 @@ var app = new Vue (
                 }
                 console.log(this.contacts[this.activeIndex].messages);
                 this.dropdownOpen = false;
+            },
+            view: function(index){
+                if(this.contacts[this.activeIndex].messages[index].status == 'received'){
+                 alert(
+                    `Il messaggio dice :${
+                        this.contacts[this.activeIndex].messages[index].text
+                    } Ricevuto il ${
+                         this.contacts[this.activeIndex].messages[index].date
+                    }`
+                     );   
+                }else{
+                    alert(
+                        `Il messaggio dice :${
+                            this.contacts[this.activeIndex].messages[index].text
+                        } Inviato il ${
+                             this.contacts[this.activeIndex].messages[index].date
+                        }`
+                         );   
+                }
+                
+               
             }
         },
        

@@ -87,7 +87,7 @@
                         <div class="dropdown" 
                          v-show= "dropdownOpen == true && msgIndex == index">
                             <div class="dropdown-content">
-                                <span>Info messaggio</span>
+                                <span @click="view(index)">Info messaggio</span>
                                 <span @click="del(index)">Cancella messaggio</span>
                             </div>
                         </div>
