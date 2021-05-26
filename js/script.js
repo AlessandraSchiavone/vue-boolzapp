@@ -102,8 +102,7 @@ var app = new Vue (
             newMessage:{
                 date:"",
                 text:'',
-                status:'sent',
-                
+                status:'sent',    
             },
             msgIndex: 0,
             dropdownOpen: false,
@@ -137,7 +136,11 @@ var app = new Vue (
                 }
             },
             getLastMex: function(contact){
-                return contact.messages[contact.messages.length - 1].text.substring(0,30)+"...";
+                if(contact.messages.length - 1 > 0){
+                    return contact.messages[contact.messages.length - 1].text.substring(0,30)+"...";
+                }else{
+                    return "";
+                }
             },
             addNewMessage: function(contact){
                 if(this.newMessage.text.trim().length > 0){
@@ -176,7 +179,7 @@ var app = new Vue (
                 this.contacts[this.activeIndex].messages.splice(index,1);
                 // this.$delete(this.contacts[this.activeIndex].messages, index);
                 if (this.contacts[this.activeIndex].messages.length == 0) { 
-                    this.contacts.splice(this.activeChatIndex, 1);
+                    this.contacts.splice(this.activeIndex, 1);
                 }
                 this.dropdownOpen = false;
             },
